@@ -18,21 +18,21 @@ Vagrant.configure("2") do |config|
     balanceador.vm.hostname = "Balanceador"
     balanceador.vm.network "private_network", ip:"192.168.10.10", virtualbox__intnet: "red1"
     balanceador.vm.network "forwarded_port", guest: 80, host: 8080
-    #balanceador.vm.provision "shell", path: "aprov_balan.sh"
+    balanceador.vm.provision "shell", path: "aprov_balan.sh"
   end
 
   config.vm.define "WEBSERVER1" do |webserveruno|
     webserveruno.vm.hostname = "web1"
     webserveruno.vm.network "private_network", ip:"192.168.10.20", virtualbox__intnet: "red1"
     webserveruno.vm.network "private_network", ip:"192.168.20.20", virtualbox__intnet: "redBASEDEDATOS"
-    #webserveruno.vm.provision "shell", path: "aprov_server1.sh"
+    webserveruno.vm.provision "shell", path: "aprov_server1.sh"
   end
 
   config.vm.define "WEBSERVER2" do |webserverdos|
     webserverdos.vm.hostname = "Web2"
     webserverdos.vm.network "private_network", ip:"192.168.10.21", virtualbox__intnet: "red1"
     webserverdos.vm.network "private_network", ip:"192.168.20.21", virtualbox__intnet: "redBASEDEDATOS"
-    #webserverdos.vm.provision "shell", path: "aprov_server2.sh"
+    webserverdos.vm.provision "shell", path: "aprov_server2.sh"
   end
 
 
@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
     servernts.vm.hostname = "Servernts"
     servernts.vm.network "private_network", ip:"192.168.10.25", virtualbox__intnet: "red1"
     servernts.vm.network "private_network", ip:"192.168.20.25", virtualbox__intnet: "redBASEDEDATOS"
-    #servernts.vm.provision "shell", path: "aprov_nts.sh"
+    servernts.vm.provision "shell", path: "aprov_nts.sh"
   end
 
 
@@ -112,3 +112,4 @@ Vagrant.configure("2") do |config|
   #   apt-get install -y apache2
   # SHELL
 end
+
